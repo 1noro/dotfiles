@@ -29,6 +29,7 @@ alias fgrep='fgrep --color=auto'
 ## Quick Access
 alias s='systemctl'
 alias j='journalctl -xe'
+alias jf='sudo journalctl -p 3 -xb'
 
 # --- Check for updates
 FLAG="/tmp/check_updates.flag"
