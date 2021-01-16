@@ -20,10 +20,15 @@ export PS1="\[\033[38;5;196m\][\[$(tput sgr0)\]\[\033[38;5;214m\]\u\[$(tput sgr0
 #complete -c man which
 complete -cf sudo
 
+# Alias
+## Color
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
+## Quick Access
+alias s='systemctl'
+alias j='journalctl -xe'
 
 # --- Check for updates
 FLAG="/tmp/check_updates.flag"
