@@ -64,3 +64,6 @@ fi
 # (parece que no funciona)
 #STEAM_FRAME_FORCE_CLOSE=1
 #export STEAM_FRAME_FORCE_CLOSE=1
+
+# --- para no olvidares del comando SXIV
+alias img='sxiv -a' # -a para iniciar la animaciones auto
