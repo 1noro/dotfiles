@@ -5,7 +5,6 @@
     "editor.multiCursorModifier": "ctrlCmd",
     "git.enableSmartCommit": true,
     "git.confirmSync": false,
-    "window.zoomLevel": 0,
     "git.autofetch": true,
     "editor.minimap.enabled": false,
     "editor.fontSize": 18,
@@ -14,5 +13,9 @@
         "editor.formatOnSave": false
     },
     "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "C_Cpp.updateChannel": "Insiders",
+    "workbench.colorTheme": "Visual Studio Dark - C++",
+    "python.languageServer": "Microsoft",
+    "editor.rulers": [80, 120]
 }
