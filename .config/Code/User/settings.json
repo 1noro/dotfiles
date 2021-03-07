@@ -17,5 +17,10 @@
     "C_Cpp.updateChannel": "Insiders",
     "workbench.colorTheme": "Visual Studio Dark - C++",
     "python.languageServer": "Microsoft",
-    "editor.rulers": [80, 120]
+    "editor.rulers": [
+        80,
+        120
+    ],
+    "liveshare.authenticationProvider": "GitHub",
+    "cSpell.language": "es-ES"
 }
