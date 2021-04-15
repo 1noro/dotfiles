@@ -22,5 +22,17 @@
         120
     ],
     "liveshare.authenticationProvider": "GitHub",
-    "cSpell.language": "es-ES"
+    "cSpell.language": "es-ES",
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ],
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    }
 }

@@ -67,3 +67,4 @@ fi
 
 # --- para no olvidares del comando SXIV
 alias img='sxiv -a' # -a para iniciar la animaciones auto
+source /usr/share/nvm/init-nvm.sh
