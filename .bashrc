@@ -18,12 +18,12 @@ parse_git_branch() {
             echo " ($BRANCH)"
         elif [ $LOCAL = $BASE ]; then
             # echo "$BRANCH Need to pull"
-            # echo " ($BRANCH🔻)"
-            echo " ($BRANCH⬇️)"
+            echo " ($BRANCH🔻)"
+            # echo " ($BRANCH⬇️)"
         elif [ $REMOTE = $BASE ]; then
             # echo "$BRANCH Need to push"
-            # echo " ($BRANCH🔺)"
-            echo " ($BRANCH⬆️)"
+            echo " ($BRANCH🔺)"
+            # echo " ($BRANCH⬆️)"
         else
             # echo "$BRANCH Diverged"
             echo " ($BRANCH⛔)"
