@@ -3,8 +3,30 @@
 #
 
 parse_git_branch() {
-    # git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+    if [[ -d ".git" ]]; then
+        # git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+        # BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'`
+        BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+
+        UPSTREAM=${1:-'@{u}'}
+        LOCAL=$(git rev-parse @)
+        REMOTE=$(git rev-parse "$UPSTREAM")
+        BASE=$(git merge-base @ "$UPSTREAM")
+
+        if [ $LOCAL = $REMOTE ]; then
+            #echo "$BRANCH Up-to-date"
+            echo " ($BRANCH)"
+        elif [ $LOCAL = $BASE ]; then
+            # echo "$BRANCH Need to pull"
+            echo " ($BRANCH🔻)"
+        elif [ $REMOTE = $BASE ]; then
+            # echo "$BRANCH Need to push"
+            echo " ($BRANCH🔺)"
+        else
+            # echo "$BRANCH Diverged"
+            echo " ($BRANCH🚨)"
+        fi
+    fi
 }
 
 # If not running interactively, don't do anything
