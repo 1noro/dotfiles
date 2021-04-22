@@ -34,5 +34,7 @@
         "**/.settings": true,
         "**/.factorypath": true
     },
-    "tabnine.experimentalAutoImports": true
+    "tabnine.experimentalAutoImports": true,
+    "workbench.iconTheme": "material-icon-theme",
+    "window.zoomLevel": 1
 }

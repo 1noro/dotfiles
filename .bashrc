@@ -5,29 +5,28 @@
 parse_git_branch() {
     if [[ -d ".git" ]]; then
         # git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+        git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
         # BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'`
-        BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+        # BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
 
-        UPSTREAM=${1:-'@{u}'}
-        LOCAL=$(git rev-parse @)
-        REMOTE=$(git rev-parse "$UPSTREAM")
-        BASE=$(git merge-base @ "$UPSTREAM")
+        # UPSTREAM=${1:-'@{u}' 2> /dev/null}
+        # LOCAL=$(git rev-parse @ 2> /dev/null) 
+        # REMOTE=$(git rev-parse "$UPSTREAM" 2> /dev/null)
+        # BASE=$(git merge-base @ "$UPSTREAM" 2> /dev/null)
 
-        if [ $LOCAL = $REMOTE ]; then
-            #echo "$BRANCH Up-to-date"
-            echo " ($BRANCH)"
-        elif [ $LOCAL = $BASE ]; then
-            # echo "$BRANCH Need to pull"
-            echo " ($BRANCH🔻)"
-            # echo " ($BRANCH⬇️)"
-        elif [ $REMOTE = $BASE ]; then
-            # echo "$BRANCH Need to push"
-            echo " ($BRANCH🔺)"
-            # echo " ($BRANCH⬆️)"
-        else
-            # echo "$BRANCH Diverged"
-            echo " ($BRANCH⛔)"
-        fi
+        # if [ $LOCAL = $REMOTE ]; then
+        #     #echo "$BRANCH Up-to-date"
+        #     echo " ($BRANCH)"
+        # elif [ $LOCAL = $BASE ]; then
+        #     # echo "$BRANCH Need to pull"
+        #     echo " ($BRANCH🔻)"
+        # elif [ $REMOTE = $BASE ]; then
+        #     # echo "$BRANCH Need to push"
+        #     echo " ($BRANCH🔺)"
+        # else
+        #     # echo "$BRANCH Diverged"
+        #     echo " ($BRANCH⛔)"
+        # fi
     fi
 }
 
@@ -73,7 +72,7 @@ if [[ $(pacman -Qu) ]]; then
         touch $FLAG
     else
         echo -e "[ info ]: \e[92m\e[1mHay actualizaciones pendientes!\e[0m"
-        echo -e "Asegúrate de \e[91m\e[1mtener tiempo\e[0m para solucionar posibles errores."
+        # echo -e "Asegúrate de \e[91m\e[1mtener tiempo\e[0m para solucionar posibles errores."
     fi
 fi
 
@@ -84,10 +83,10 @@ if [[ ! $(pgrep evolution -x) ]]; then
 fi
 
 # --- Git fetch if is a repository
-if [[ -d ".git" ]]; then
-    echo -e "[ info ]: fetching repository"
-    git fetch
-fi
+# if [[ -d ".git" ]]; then
+#     echo -e "[ info ]: fetching repository"
+#     git fetch 2> /dev/null
+# fi
 
 # para que steam no se minimice en el 'tray' inexistente de Gnome Shell y se
 # cierre completamente al pulsar X
