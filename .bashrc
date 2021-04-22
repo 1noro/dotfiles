@@ -83,6 +83,12 @@ if [[ ! $(pgrep evolution -x) ]]; then
     echo -e "[ info ]: \e[91m\e[1mEvolution no está abierto.\e[0m"
 fi
 
+# --- Git fetch if is a repository
+if [[ -d ".git" ]]; then
+    echo -e "[ info ]: fetching repository"
+    git fetch
+fi
+
 # para que steam no se minimice en el 'tray' inexistente de Gnome Shell y se
 # cierre completamente al pulsar X
 # (parece que no funciona)
