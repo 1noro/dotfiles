@@ -6,7 +6,6 @@
     "git.enableSmartCommit": true,
     "git.confirmSync": false,
     "git.autofetch": true,
-    "editor.minimap.enabled": false,
     "editor.fontSize": 18,
     "editor.mouseWheelZoom": true,
     "[go]": {
@@ -34,5 +33,6 @@
         "**/.project": true,
         "**/.settings": true,
         "**/.factorypath": true
-    }
+    },
+    "tabnine.experimentalAutoImports": true
 }
