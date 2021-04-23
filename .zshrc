@@ -28,9 +28,15 @@ PROMPT='%F{214}%n%f@%F{153}%m%f:%F{183}%~%f%# '
 RPROMPT='$GITSTATUS_PROMPT'
 
 ## Update reminder
+FLAG="/tmp/check_updates.flag"
 if [[ $(pacman -Qu) ]]; then
-    echo -e "Have you checked the \e[92m\e[1mupdates\e[0m today?"
-    echo "sudo pacman -Syyu" >> ~/.histfile
+    if [ ! -f $FLAG ]; then
+        echo -e "Have you checked the \e[92m\e[1mupdates\e[0m yet?"
+        echo "sudo pacman -Syyu" >> ~/.histfile
+        touch $FLAG
+    else
+        echo -e "Have you checked the \e[92m\e[1mupdates\e[0m yet?"
+    fi
 fi
 
 ## Alias
