@@ -20,7 +20,7 @@ compinit
 
 ## Sources
 source /usr/share/nvm/init-nvm.sh
-source ~/gitstatus/gitstatus.prompt.zsh # (https://github.com/romkatv/gitstatus)
+source ~/.gitstatus/gitstatus.prompt.zsh # (https://github.com/romkatv/gitstatus)
 
 ## Prompt
 # (https://zsh-prompt-generator.site)
