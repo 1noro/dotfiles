@@ -12,22 +12,14 @@
         "editor.formatOnSave": false
     },
     "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "C_Cpp.updateChannel": "Insiders",
-    "workbench.colorTheme": "Visual Studio Dark - C++",
-    "python.languageServer": "Microsoft",
     "editor.rulers": [
         80,
-        120
+        100
     ],
-    "liveshare.authenticationProvider": "GitHub",
-    "cSpell.language": "es-ES",
-    "workbench.editorAssociations": [
-        {
-            "viewType": "jupyter.notebook.ipynb",
-            "filenamePattern": "*.ipynb"
-        }
-    ],
+    "cSpell.language": "es-ES,en-GB",
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
     "files.exclude": {
         "**/.classpath": true,
         "**/.project": true,
@@ -36,5 +28,22 @@
     },
     "tabnine.experimentalAutoImports": true,
     "workbench.iconTheme": "material-icon-theme",
-    "window.zoomLevel": 1
+    "cSpell.userWords": [
+        "Ecco"
+    ],
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "window.zoomLevel": 1,
+    "editor.minimap.enabled": false,
+    "[javascript]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    },
+    "latex-workshop.view.pdf.viewer": "tab",
+    "[latex]": {
+        "editor.wordWrap": "on"
+    },
+    "cSpell.enableFiletypes": [
+        "dockerfile"
+    ]
 }

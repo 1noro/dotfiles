@@ -50,3 +50,10 @@ alias s='systemctl'
 alias j='journalctl -xe'
 alias jf='sudo journalctl -p 3 -xb'
 alias img='sxiv -a' # -a para iniciar la animaciones auto
+alias pacamn='pacman' # fix the typo
+
+## ANDROID
+#export ANDROID_HOME=$HOME/Android/Sdk
+#export PATH=$PATH:$ANDROID_HOME/tools
+#export PATH=$PATH:$ANDROID_HOME/platform-tools
+export ANDROID_SDK_ROOT=$HOME/Android/Sdk
