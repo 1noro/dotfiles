@@ -52,9 +52,14 @@ alias jf='sudo journalctl -p 3 -xb'
 alias img='sxiv -a' # -a para iniciar la animaciones auto
 alias pacamn='pacman' # fix the typo
 alias pacaman='pacman' # fix the typo
+alias vi='vim'
 
 ## ANDROID
 #export ANDROID_HOME=$HOME/Android/Sdk
 #export PATH=$PATH:$ANDROID_HOME/tools
 #export PATH=$PATH:$ANDROID_HOME/platform-tools
 export ANDROID_SDK_ROOT=$HOME/Android/Sdk
+
+# Alias for the Contemporary-z program
+alias z='. ~/.local/share/cz/cz.zsh'
+
