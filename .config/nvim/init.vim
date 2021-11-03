@@ -45,6 +45,11 @@ call plug#end()
 "quick save!!
     map <leader><leader> :w<CR>
 
+"Toggle line numbers
+    nnoremap <F2> :set nonumber! norelativenumber!<CR>
+    "inoremap <F2> <C-o> :set nonumber! norelativenumber!<CR>
+    "cnoremap <F2> <C-c> :set nonumber! norelativenumber!<CR>
+
 "NERDTreeToggle when <F3>    
     "F3 remap in normal mode
     noremap <F3> :NERDTreeToggle<CR>
@@ -52,4 +57,7 @@ call plug#end()
     "inoremap <F3> <C-o>:NERDTreeToggle<CR>
     "F3 remap in command mode
     "cnoremap <F3> <C-c>:NERDTreeToggle<CR>
+
+"NERDTree show hidden files by default
+    let NERDTreeShowHidden=1
 
