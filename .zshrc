@@ -52,7 +52,8 @@ alias jf='sudo journalctl -p 3 -xb'
 alias img='sxiv -a' # -a para iniciar la animaciones auto
 alias pacamn='pacman' # fix the typo
 alias pacaman='pacman' # fix the typo
-alias vi='vim'
+#alias vi='vim'
+alias nvimconf='nvim .config/nvim/init.vim'
 
 ## ANDROID
 #export ANDROID_HOME=$HOME/Android/Sdk
