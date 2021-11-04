@@ -10,6 +10,9 @@ call plug#end()
     set encoding=utf-8
     set number relativenumber
 
+"share clipboard install wl-copy for wyland or xclip for X11
+    set clipboard+=unnamedplus
+
 "enable autocompletion
     set wildmode=longest,list,full
 
