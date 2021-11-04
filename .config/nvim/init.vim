@@ -48,6 +48,11 @@ call plug#end()
 "quick save!!
     map <leader><leader> :w<CR>
 
+"set ruler at line 80 and toggle it with <F4>
+    "set colorcolumn=80
+    highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
+    nnoremap <F4> :execute "set colorcolumn=" . (&colorcolumn == "" ? "80" : "")<CR>
+
 "Toggle line numbers
     nnoremap <F2> :set nonumber! norelativenumber!<CR>
     "inoremap <F2> <C-o> :set nonumber! norelativenumber!<CR>

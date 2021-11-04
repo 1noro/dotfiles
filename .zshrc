@@ -53,7 +53,7 @@ alias img='sxiv -a' # -a para iniciar la animaciones auto
 alias pacamn='pacman' # fix the typo
 alias pacaman='pacman' # fix the typo
 #alias vi='vim'
-alias nvimconf='nvim .config/nvim/init.vim'
+alias nvimconf='nvim ~/.config/nvim/init.vim'
 
 ## ANDROID
 #export ANDROID_HOME=$HOME/Android/Sdk
