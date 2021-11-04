@@ -70,3 +70,6 @@ call plug#end()
 "Splits open at the bottom and right
     set splitbelow splitright
 
+"map *.env.template to .env syntax
+    autocmd BufNewFile,BufRead *.env.template set syntax=sh
+    autocmd BufNewFile,BufRead *.env.tmpl set syntax=sh
