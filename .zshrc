@@ -6,8 +6,8 @@
 
 ## Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 setopt beep
 bindkey -e
 
@@ -19,13 +19,14 @@ compinit
 # CUSTOM CONFIG
 
 ## Sources
-source /usr/share/nvm/init-nvm.sh
+source /usr/share/nvm/init-nvm.sh # for NodeJS versions
 source ~/.gitstatus/gitstatus.prompt.zsh # (https://github.com/romkatv/gitstatus)
 
 ## Prompt
 # (https://zsh-prompt-generator.site)
-PROMPT='%F{214}%n%f@%F{153}%m%f:%F{183}%~%f%# '
-RPROMPT='$GITSTATUS_PROMPT'
+# PROMPT='%F{214}%n%f@%F{153}%m%f:%F{183}%~%f%# '
+# RPROMPT='$GITSTATUS_PROMPT'
+eval "$(starship init zsh)"
 
 ## Update reminder
 FLAG="/tmp/check_updates.flag"
@@ -52,7 +53,6 @@ alias jf='sudo journalctl -p 3 -xb'
 alias img='sxiv -a' # -a para iniciar la animaciones auto
 alias pacamn='pacman' # fix the typo
 alias pacaman='pacman' # fix the typo
-#alias vi='vim'
 alias nvimconf='nvim ~/.config/nvim/init.vim'
 
 ## ANDROID
