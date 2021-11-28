@@ -29,13 +29,18 @@ set fish_greeting
 set -gx EDITOR nvim
 set -gx ANDROID_SDK_ROOT $HOME/Android/Sdk
 
-# alias
-alias s='systemctl'
-alias j='journalctl -xe'
-alias jf='sudo journalctl -p 3 -xb'
-alias img='sxiv -a' # -a para iniciar la animaciones auto
-alias nvimconf='nvim ~/.config/nvim/init.vim'
-alias p='sudo pacman -Syyu'
+# abreviations (como alias pero muestra el comando)
+abbr p 'sudo pacman'
+abbr lsp 'pacman -Qett --color=always | less -R' # list packages
+abbr SS 'sudo systemctl'
+abbr j 'journalctl -xe'
+abbr Sjf 'sudo journalctl -p 3 -xb'
+abbr e "$EDITOR"
+abbr v "$EDITOR"
+abbr vc 'nvim ~/.config/nvim/init.vim'
+abbr img 'sxiv -a' # -a para iniciar la animaciones auto
+abbr x 'sxiv -at' # -at para iniciar la animaciones auto y abrir en thumbnail mode
+abbr yt "youtube-dl --add-metadata -i -o '%(upload_date)s-%(title)s.%(ext)s'"
 
 # starship prompt
 starship init fish | source
