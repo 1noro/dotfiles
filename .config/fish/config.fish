@@ -35,6 +35,7 @@ alias j='journalctl -xe'
 alias jf='sudo journalctl -p 3 -xb'
 alias img='sxiv -a' # -a para iniciar la animaciones auto
 alias nvimconf='nvim ~/.config/nvim/init.vim'
+alias p='sudo pacman -Syyu'
 
 # starship prompt
 starship init fish | source
