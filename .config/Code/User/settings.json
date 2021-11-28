@@ -28,9 +28,6 @@
     },
     "tabnine.experimentalAutoImports": true,
     "workbench.iconTheme": "material-icon-theme",
-    "cSpell.userWords": [
-        "Ecco"
-    ],
     "javascript.updateImportsOnFileMove.enabled": "always",
     "window.zoomLevel": 1,
     "editor.minimap.enabled": false,
@@ -44,8 +41,18 @@
         "editor.wordWrap": "on"
     },
     "cSpell.enableFiletypes": [
-        "dockerfile"
+        "dockerfile",
+        "makefile"
     ],
     "editor.cursorStyle": "block",
-    "files.insertFinalNewline": true
+    "files.insertFinalNewline": true,
+    "vim.useSystemClipboard": true,
+    "editor.inlineSuggest.enabled": true,
+    "github.copilot.enable": {
+        "*": true,
+        "yaml": false,
+        "plaintext": false,
+        "markdown": false,
+        "json": false
+    }
 }
