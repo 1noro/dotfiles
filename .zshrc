@@ -20,7 +20,7 @@ compinit
 
 ## Sources
 source /usr/share/nvm/init-nvm.sh # for NodeJS versions
-source ~/.gitstatus/gitstatus.prompt.zsh # (https://github.com/romkatv/gitstatus)
+# source ~/.gitstatus/gitstatus.prompt.zsh # (https://github.com/romkatv/gitstatus)
 
 ## Prompt
 # (https://zsh-prompt-generator.site)
@@ -63,4 +63,3 @@ export ANDROID_SDK_ROOT=$HOME/Android/Sdk
 
 # Alias for the Contemporary-z program
 alias z='. ~/.local/share/cz/cz.zsh'
-
