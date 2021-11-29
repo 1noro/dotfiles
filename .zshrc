@@ -41,6 +41,8 @@ fi
 # exports
 export ANDROID_SDK_ROOT=$HOME/Android/Sdk
 export EDITOR=nvim
+export HISTSIZE=10000
+export HISTFILESIZE=10000
 
 ## Alias
 ### Color
