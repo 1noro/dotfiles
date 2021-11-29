@@ -32,13 +32,15 @@ eval "$(starship init zsh)"
 FLAG="/tmp/check_updates.flag"
 if [[ $(pacman -Qu) ]]; then
     if [ ! -f $FLAG ]; then
-        echo -e "Have you checked the \e[92m\e[1mupdates\e[0m yet?"
         echo "sudo pacman -Syyu" >> ~/.histfile
         touch $FLAG
-    else
-        echo -e "Have you checked the \e[92m\e[1mupdates\e[0m yet?"
     fi
+    echo -e "Have you checked the \e[92m\e[1mupdates\e[0m yet?"
 fi
+
+# exports
+export ANDROID_SDK_ROOT=$HOME/Android/Sdk
+export EDITOR=nvim
 
 ## Alias
 ### Color
@@ -55,11 +57,8 @@ alias pacamn='pacman' # fix the typo
 alias pacaman='pacman' # fix the typo
 alias nvimconf='nvim ~/.config/nvim/init.vim'
 
-## ANDROID
-#export ANDROID_HOME=$HOME/Android/Sdk
-#export PATH=$PATH:$ANDROID_HOME/tools
-#export PATH=$PATH:$ANDROID_HOME/platform-tools
-export ANDROID_SDK_ROOT=$HOME/Android/Sdk
-
 # Alias for the Contemporary-z program
-alias z='. ~/.local/share/cz/cz.zsh'
+# alias z='. ~/.local/share/cz/cz.zsh'
+
+# starship prompt
+eval "$(starship init zsh)"
