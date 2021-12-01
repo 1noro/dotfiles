@@ -2,6 +2,7 @@
     "conventionalCommits.scopes": [
         "fish",
         "bash",
-        "zsh"
+        "zsh",
+        "git"
     ]
 }
