@@ -29,6 +29,9 @@ set fish_greeting
 set -gx EDITOR nvim
 set -gx ANDROID_SDK_ROOT $HOME/Android/Sdk
 
+# aliases
+alias fuck "sudo $history[1]"
+
 # abreviations (como alias pero muestra el comando)
 abbr p 'sudo pacman'
 abbr lsp 'pacman -Qett --color=always | less -R' # list packages
