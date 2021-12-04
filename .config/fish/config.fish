@@ -7,7 +7,7 @@ end
 
 # update reminder (fish version)
 set FLAG "/tmp/check_updates.flag"
-if ! test -z (pacman -Qu)
+if ! test -z "(pacman -Qu)"
     if ! test -f $FLAG
         # (not woringg in fish)
         # echo "sudo pacman -Syyu" >> ~/.histfile
