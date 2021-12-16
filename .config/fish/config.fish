@@ -1,21 +1,12 @@
 # install fisher (https://github.com/jorgebucaran/fisher)
 # curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 
-if status is-interactive
-    # Commands to run in interactive sessions can go here
-end
+# remove fish wellcome message
+set fish_greeting
 
-# update reminder (fish version)
-set FLAG "/tmp/check_updates.flag"
-set PQU (pacman -Qu)
-if test -n "$PQU"
-    if ! test -f $FLAG
-        # (not woringg in fish)
-        # echo "sudo pacman -Syyu" >> ~/.histfile
-        touch $FLAG
-    end
-    echo -e "Have you checked the \e[92m\e[1mupdates\e[0m yet?"
-end
+# global vars
+set -gx EDITOR nvim
+set -gx ANDROID_SDK_ROOT $HOME/Android/Sdk
 
 # nvm
 function nvm
@@ -23,28 +14,37 @@ function nvm
     bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
 end
 
-# remove wellcome message
-set fish_greeting
+if status is-interactive
+    # Commands to run in interactive sessions can go here
 
-# global vars
-set -gx EDITOR nvim
-set -gx ANDROID_SDK_ROOT $HOME/Android/Sdk
+    # update reminder (fish version)
+    set FLAG "/tmp/check_updates.flag"
+    set PQU (pacman -Qu)
+    if test -n "$PQU"
+        if ! test -f $FLAG
+            # (not woringg in fish)
+            # echo "sudo pacman -Syyu" >> ~/.histfile
+            touch $FLAG
+        end
+        echo -e "Have you checked the \e[92m\e[1mupdates\e[0m yet?"
+    end
 
-# aliases
-alias fuck "sudo $history[1]"
+    # aliases
+    alias fuck "sudo $history[1]"
 
-# abreviations (como alias pero muestra el comando)
-abbr p 'sudo pacman'
-abbr lsp 'pacman -Qett --color=always | less -R' # list packages
-abbr SS 'sudo systemctl'
-abbr j 'journalctl -xe'
-abbr Sjf 'sudo journalctl -p 3 -xb'
-abbr e "$EDITOR"
-abbr v "$EDITOR"
-abbr vc 'nvim ~/.config/nvim/init.vim'
-abbr img 'sxiv -a' # -a para iniciar la animaciones auto
-abbr x 'sxiv -at' # -at para iniciar la animaciones auto y abrir en thumbnail mode
-abbr yt "youtube-dl --add-metadata -i -o '%(upload_date)s-%(title)s.%(ext)s'"
+    # abreviations (como alias pero muestra el comando)
+    abbr p 'sudo pacman'
+    abbr lsp 'pacman -Qett --color=always | less -R' # list packages
+    abbr SS 'sudo systemctl'
+    abbr j 'journalctl -xe'
+    abbr Sjf 'sudo journalctl -p 3 -xb'
+    abbr e "$EDITOR"
+    abbr v "$EDITOR"
+    abbr vc 'nvim ~/.config/nvim/init.vim'
+    abbr img 'sxiv -a' # -a para iniciar la animaciones auto
+    abbr x 'sxiv -at' # -at para iniciar la animaciones auto y abrir en thumbnail mode
+    abbr yt "yt-dlp --add-metadata -i -o '%(upload_date)s-%(title)s.%(ext)s'"
 
-# starship prompt
-starship init fish | source
+    # starship prompt
+    starship init fish | source
+end
