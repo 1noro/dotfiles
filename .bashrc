@@ -1,4 +1,4 @@
-#
+#!/bin/bash
 # ~/.bashrc
 #
 
@@ -59,12 +59,12 @@ alias lsp='pacman -Qett --color=always | less -R' # list packages
 alias SS='sudo systemctl'
 alias j='journalctl -xe'
 alias Sjf='sudo journalctl -p 3 -xb'
-alias e="$EDITOR"
-alias v="$EDITOR"
+alias e='$EDITOR'
+alias v='$EDITOR'
 alias vc='nvim ~/.config/nvim/init.vim'
 alias img='sxiv -a' # -a para iniciar la animaciones auto
 alias x='sxiv -at' # -at para iniciar la animaciones auto y abrir en thumbnail mode
-alias yt="youtube-dl --add-metadata -i -o '%(upload_date)s-%(title)s.%(ext)s'"
+alias yt="yt-dlp --add-metadata -i -o '%(upload_date)s-%(title)s.%(ext)s'"
 
 # starship prompt
 eval "$(starship init bash)"
