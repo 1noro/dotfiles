@@ -22,11 +22,15 @@ if status is-interactive
     set PQU (pacman -Qu)
     if test -n "$PQU"
         if ! test -f $FLAG
-            # (not woringg in fish)
+            # (not working in fish)
             # echo "sudo pacman -Syyu" >> ~/.histfile
             touch $FLAG
         end
         echo -e "Have you checked the \e[92m\e[1mupdates\e[0m yet?"
+    end
+
+    if test (claws-mail --status INBOX | awk '{print $2}') -gt 0
+        echo -e "You have \e[92m\e[1mnew\e[0m mail!"
     end
 
     # aliases
