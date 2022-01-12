@@ -29,7 +29,7 @@ if status is-interactive
         echo -e "Have you checked the \e[92m\e[1mupdates\e[0m yet?"
     end
 
-    if test (claws-mail --status INBOX | awk '{print $2}') -gt 0
+    if test (ps -A | grep claws-mail) && test (claws-mail --status INBOX | awk '{print $2}') -gt 0
         echo -e "You have \e[92m\e[1mnew\e[0m mail!"
     end
 
