@@ -3,6 +3,7 @@
         "fish",
         "bash",
         "zsh",
-        "git"
+        "git",
+        "beets"
     ]
 }
