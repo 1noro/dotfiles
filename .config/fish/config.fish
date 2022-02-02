@@ -48,6 +48,7 @@ if status is-interactive
     abbr img 'sxiv -a' # -a para iniciar la animaciones auto
     abbr x 'sxiv -at' # -at para iniciar la animaciones auto y abrir en thumbnail mode
     abbr yt "yt-dlp --add-metadata -i -o '%(upload_date)s-%(title)s.%(ext)s'"
+    # abbr msync "rsync -avu --delete --no-perms '/home/cosmo/Música/' '/nfs/Homedir/a'"
 
     # starship prompt
     starship init fish | source

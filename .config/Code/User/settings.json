@@ -29,7 +29,7 @@
     "tabnine.experimentalAutoImports": true,
     "workbench.iconTheme": "material-icon-theme",
     "javascript.updateImportsOnFileMove.enabled": "always",
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 2,
     "editor.minimap.enabled": false,
     "[javascript]": {
         "editor.tabSize": 2,
@@ -50,7 +50,7 @@
     "editor.inlineSuggest.enabled": true,
     "github.copilot.enable": {
         "*": true,
-        "yaml": false,
+        "yaml": true,
         "plaintext": false,
         "markdown": false,
         "json": false
