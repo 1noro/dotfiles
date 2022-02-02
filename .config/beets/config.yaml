@@ -1,12 +1,12 @@
 directory: /nfs/Music/Beets
-library: ~/.beetslibrary.db
+library: /nfs/Music/beetslibrary.db
 art_filename: cover
 ui:
     color: yes
 import:
     move: no
     bell: yes
-    log: ~/.beetslog
+    log: /nfs/Music/beetslog
 paths:
     default: $albumartist/$album%aunique{}/$track - $title
     singleton: Non-Album/$artist/$title
