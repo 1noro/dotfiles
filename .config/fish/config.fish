@@ -49,6 +49,7 @@ if status is-interactive
     abbr x 'sxiv -at' # -at para iniciar la animaciones auto y abrir en thumbnail mode
     abbr yt "yt-dlp --add-metadata -i -o '%(upload_date)s-%(title)s.%(ext)s'"
     # abbr msync "rsync -avu --delete --no-perms '/home/cosmo/Música/' '/nfs/Homedir/a'"
+    abbr mkctl "microk8s kubectl"
 
     # starship prompt
     starship init fish | source
