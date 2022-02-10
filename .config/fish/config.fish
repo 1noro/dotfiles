@@ -35,8 +35,8 @@ if status is-interactive
 
     # aliases
     alias fuck "sudo $history[1]"
-    alias mkctl 'microk8s kubectl'
-    alias helm 'microk8s helm3'
+    # alias mkctl 'microk8s kubectl'
+    # alias helm 'microk8s helm3'
 
     # abreviations (como alias pero muestra el comando)
     abbr p 'sudo pacman'
