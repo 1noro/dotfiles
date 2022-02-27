@@ -36,10 +36,10 @@ fi
 # fi
 
 # sources
-# source /usr/share/nvm/init-nvm.sh
+source /usr/share/nvm/init-nvm.sh
 
 # exports
-export ANDROID_SDK_ROOT=$HOME/Android/Sdk
+# export ANDROID_SDK_ROOT=$HOME/Android/Sdk
 export EDITOR=nvim
 export HISTSIZE=10000
 export HISTFILESIZE=10000
@@ -65,9 +65,6 @@ alias vc='nvim ~/.config/nvim/init.vim'
 alias img='sxiv -a' # -a para iniciar la animaciones auto
 alias x='sxiv -at' # -at para iniciar la animaciones auto y abrir en thumbnail mode
 alias yt="yt-dlp --add-metadata -i -o '%(upload_date)s-%(title)s.%(ext)s'"
-# - microk8s
-# alias kubectl='microk8s kubectl'
-# alias helm='microk8s helm3'
 
 # starship prompt
 eval "$(starship init bash)"
