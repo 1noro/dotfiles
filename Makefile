@@ -16,5 +16,4 @@ deploy: ## Deploy configs
 
 .PHONY: clean
 clean: ## Clean configs
-	# @/bin/bash scripts/reset.sh
-	@echo "cleaning"
+	@/bin/bash scripts/reset.sh
