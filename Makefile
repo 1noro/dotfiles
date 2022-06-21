@@ -14,6 +14,6 @@ deps: ## Install dependencies
 deploy: ## Deploy configs
 	@/bin/bash scripts/deploy.sh
 
-.PHONY: clean
-clean: ## Clean configs
-	@/bin/bash scripts/reset.sh
+.PHONY: restore
+restore: ## Restore configs
+	@/bin/bash scripts/restore.sh
