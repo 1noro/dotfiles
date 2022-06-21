@@ -51,8 +51,12 @@
     "github.copilot.enable": {
         "*": true,
         "yaml": true,
-        "plaintext": false,
+        "plaintext": true,
         "markdown": false,
-        "json": false
-    }
+        "json": true,
+        "latex": false
+    },
+    "redhat.telemetry.enabled": true,
+    "workbench.editor.untitled.hint": "hidden",
+    "workbench.colorTheme": "Gruvbox Dark Medium"
 }

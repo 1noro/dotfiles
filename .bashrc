@@ -1,25 +1,23 @@
 #!/bin/bash
 # ~/.bashrc
-#
+# mantained by 1noro for the purpose of personal use
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-parse_git_branch() {
-    if [[ -d ".git" ]]; then
-        git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-    fi
-}
+# PROMPT
+# - bash prompt
+# parse_git_branch() {
+#     if [[ -d ".git" ]]; then
+#         git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+#     fi
+# }
+# export PS1="\[\033[38;5;9m\][\[$(tput sgr0)\]\[\033[38;5;11m\]\u\[$(tput sgr0)\]@\[$(tput sgr0)\]\[\033[38;5;6m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;13m\]\W\[$(tput sgr0)\]\[\033[38;5;11m\]\$(parse_git_branch)\[$(tput sgr0)\]\[\033[38;5;9m\]]\[$(tput sgr0)\]\\$\[$(tput sgr0)\] "
 
-# export PS1="[\[$(tput sgr0)\]\[\033[38;5;10m\]\u\[$(tput sgr0)\]@\[$(tput sgr0)\]\[\033[38;5;33m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;201m\]\W\[$(tput sgr0)\]]\\$ \[$(tput sgr0)\]"
-# export PS1="\[\033[38;5;196m\][\[$(tput sgr0)\]\[\033[38;5;214m\]\u\[$(tput sgr0)\]\[\033[38;5;142m\]@\[$(tput sgr0)\]\[\033[38;5;67m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;135m\]\W\[$(tput sgr0)\]\[\033[38;5;196m\]]\[$(tput sgr0)\]\\$\[$(tput sgr0)\] "
-# export PS1="\[\033[38;5;196m\][\[$(tput sgr0)\]\[\033[38;5;214m\]\u\[$(tput sgr0)\]\[\033[38;5;142m\]@\[$(tput sgr0)\]\[\033[38;5;67m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;135m\]\W\[$(tput sgr0)\]\[\e[91m\]\$(parse_git_branch)\[\033[38;5;196m\]]\[$(tput sgr0)\]\\$\[$(tput sgr0)\] "
-export PS1="\[\033[38;5;9m\][\[$(tput sgr0)\]\[\033[38;5;11m\]\u\[$(tput sgr0)\]@\[$(tput sgr0)\]\[\033[38;5;6m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;13m\]\W\[$(tput sgr0)\]\[\033[38;5;11m\]\$(parse_git_branch)\[$(tput sgr0)\]\[\033[38;5;9m\]]\[$(tput sgr0)\]\\$\[$(tput sgr0)\] "
-# color es predeterminados:
-# texto: #EBDDC9, #A3998A
-# fondo: #272931
+# - starship prompt
+eval "$(starship init bash)"
 
-# upadates reminder
+# updates reminder
 FLAG="/tmp/check_updates.flag"
 if [[ $(pacman -Qu) ]]; then
     if [ ! -f $FLAG ]; then
@@ -29,25 +27,27 @@ if [[ $(pacman -Qu) ]]; then
     echo -e "Have you checked the \e[92m\e[1mupdates\e[0m yet?"
 fi
 
-# check for evolution
+# check for evolution (email)
 # FLAG="/tmp/check_updates.flag"
 # if [[ ! $(pgrep evolution -x) ]]; then
 #     echo -e "[ info ]: \e[91m\e[1mEvolution no está abierto.\e[0m"
 # fi
 
-# sources
+# SOURCES
 source /usr/share/nvm/init-nvm.sh
 
-# exports
+# EXPORTS
 # export ANDROID_SDK_ROOT=$HOME/Android/Sdk
 export EDITOR=nvim
 export HISTSIZE=10000
 export HISTFILESIZE=10000
+# para que las aplicaciones qt usen wayland (creo que no funciona muy bien)
+export QT_QPA_PLATFORM=wayland
 
 #complete -c man which
 complete -cf sudo
 
-# alias
+# ALIAS
 # - color
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
@@ -65,6 +65,4 @@ alias vc='nvim ~/.config/nvim/init.vim'
 alias img='sxiv -a' # -a para iniciar la animaciones auto
 alias x='sxiv -at' # -at para iniciar la animaciones auto y abrir en thumbnail mode
 alias yt="yt-dlp --add-metadata -i -o '%(upload_date)s-%(title)s.%(ext)s'"
-
-# starship prompt
-eval "$(starship init bash)"
+alias m='make'
