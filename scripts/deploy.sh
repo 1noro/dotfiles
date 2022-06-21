@@ -26,7 +26,7 @@ if [ "$SHELL" = "/bin/bash" ]; then
 fi
 
 # zsh
-if [ "$SHELL" = "/usr/bin/zsh" ]; then
+if [ "$SHELL" = "/usr/bin/zsh" ] && [ -f "$HOME/.zshrc" ]; then
     printf "zsh "
     mv "$HOME/.zshrc" "$BKP_DIR/"
     printf "[backuped] "
