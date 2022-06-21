@@ -8,7 +8,6 @@ My dotfiles repo.
 - zsh _(not maintained)_
 - fish _(not maintained)_
 - git
-- vim _(not maintained)_
 - nvim
 - beets
 - mpv
