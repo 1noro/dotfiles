@@ -7,24 +7,28 @@
 
 # PROMPT
 # - bash prompt
-# parse_git_branch() {
-#     if [[ -d ".git" ]]; then
-#         git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-#     fi
-# }
-# export PS1="\[\033[38;5;9m\][\[$(tput sgr0)\]\[\033[38;5;11m\]\u\[$(tput sgr0)\]@\[$(tput sgr0)\]\[\033[38;5;6m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;13m\]\W\[$(tput sgr0)\]\[\033[38;5;11m\]\$(parse_git_branch)\[$(tput sgr0)\]\[\033[38;5;9m\]]\[$(tput sgr0)\]\\$\[$(tput sgr0)\] "
+parse_git_branch() {
+    if [[ -d ".git" ]]; then
+        git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+    fi
+}
+export PS1="\[\033[38;5;9m\][\[$(tput sgr0)\]\[\033[38;5;11m\]\u\[$(tput sgr0)\]@\[$(tput sgr0)\]\[\033[38;5;6m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;13m\]\W\[$(tput sgr0)\]\[\033[38;5;11m\]\$(parse_git_branch)\[$(tput sgr0)\]\[\033[38;5;9m\]]\[$(tput sgr0)\]\\$\[$(tput sgr0)\] "
 
 # - starship prompt
-eval "$(starship init bash)"
+if command -v starship &> /dev/null; then
+    eval "$(starship init bash)"
+fi
 
 # updates reminder
 FLAG="/tmp/check_updates.flag"
-if [[ $(pacman -Qu) ]]; then
-    if [ ! -f $FLAG ]; then
-        echo "sudo pacman -Syyu" >> ~/.histfile
-        touch $FLAG
+if command -v pacman &> /dev/null; then
+    if [[ $(pacman -Qu) ]]; then
+        if [ ! -f $FLAG ]; then
+            echo "sudo pacman -Syyu" >> ~/.histfile
+            touch $FLAG
+        fi
+        echo -e "Have you checked the \e[92m\e[1mupdates\e[0m yet?"
     fi
-    echo -e "Have you checked the \e[92m\e[1mupdates\e[0m yet?"
 fi
 
 # check for evolution (email)
@@ -34,7 +38,9 @@ fi
 # fi
 
 # SOURCES
-source /usr/share/nvm/init-nvm.sh
+if command -v nvm &> /dev/null; then
+    source /usr/share/nvm/init-nvm.sh
+fi
 
 # EXPORTS
 # export ANDROID_SDK_ROOT=$HOME/Android/Sdk
