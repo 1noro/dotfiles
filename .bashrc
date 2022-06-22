@@ -1,6 +1,6 @@
 #!/bin/bash
 # ~/.bashrc
-# mantained by 1noro for the purpose of personal use
+# maintained by 1noro for the purpose of personal use
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -19,7 +19,7 @@ if command -v starship &> /dev/null; then
     eval "$(starship init bash)"
 fi
 
-# updates reminder
+# PACMAN UPDATE REMINDER
 FLAG="/tmp/check_updates.flag"
 if command -v pacman &> /dev/null; then
     if [[ $(pacman -Qu) ]]; then
@@ -31,15 +31,14 @@ if command -v pacman &> /dev/null; then
     fi
 fi
 
-# check for evolution (email)
-# FLAG="/tmp/check_updates.flag"
-# if [[ ! $(pgrep evolution -x) ]]; then
-#     echo -e "[ info ]: \e[91m\e[1mEvolution no está abierto.\e[0m"
-# fi
-
-# SOURCES
-if command -v nvm &> /dev/null; then
+# NVM
+if [ -f /usr/share/nvm/init-nvm.sh ]; then
     source /usr/share/nvm/init-nvm.sh
+fi
+if [ -f "$HOME/.nvm/nvm.sh" ]; then
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 
 # EXPORTS
@@ -59,6 +58,13 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
+# -- docker
+alias di='docker images'
+alias dirn='docker image rm $(docker images | grep none | awk "{print \$3}")'
+alias dps='docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}"'
+# - sxiv
+alias img='sxiv -a' # -a para iniciar la animaciones auto
+alias x='sxiv -at' # -at para iniciar la animaciones auto y abrir en thumbnail mode
 # - quick access
 alias p='sudo pacman'
 alias lsp='pacman -Qett --color=always | less -R' # list packages
@@ -68,7 +74,8 @@ alias Sjf='sudo journalctl -p 3 -xb'
 alias e='$EDITOR'
 alias v='$EDITOR'
 alias vc='nvim ~/.config/nvim/init.vim'
-alias img='sxiv -a' # -a para iniciar la animaciones auto
-alias x='sxiv -at' # -at para iniciar la animaciones auto y abrir en thumbnail mode
 alias yt="yt-dlp --add-metadata -i -o '%(upload_date)s-%(title)s.%(ext)s'"
 alias m='make'
+alias fuck='sudo !!'
+alias b='xkbbell'
+# alias pandoc="docker run --rm --volume \"$(pwd):/data\" --user $(id -u):$(id -g) pandoc/latex"
