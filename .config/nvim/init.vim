@@ -1,10 +1,11 @@
 " init.vim
-" Maintained by 1noro for the purpose of personal use
+" Maintainer: 1noro <ppuubblliicc@protonmail..com> 
 
 " Map leader to space
 let mapleader=" "
 
-" #PLUGINS
+
+" # PLUGINS -------------------------------------------------------------------
 " Install vim-plug: https://github.com/junegunn/vim-plug#unix-linux
 call plug#begin('~/.config/nvim/plugged')
     " File system explorer
@@ -23,9 +24,17 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'nvim-lua/plenary.nvim'
     " Highly extendable fuzzy finder over lists
     Plug 'nvim-telescope/telescope.nvim'
+    " A light and configurable statusline/tabline
+    Plug 'itchyny/lightline.vim'
+    " Gruvbox themes
+    Plug 'morhetz/gruvbox'
+    Plug 'shinchu/lightline-gruvbox.vim'
+    " Toggle comments with <leader>c<leader>
+    Plug 'scrooloose/nerdcommenter'
 call plug#end()
 
-" #BASICS
+
+" # BASICS -------------------------------------------------------------------- 
 syntax on
 set encoding=utf-8
 set number relativenumber
@@ -42,6 +51,7 @@ set clipboard+=unnamedplus
 
 " Enable autocompletion
 set wildmode=longest,list,full
+"set wildmode=full:lastused " another option
 
 " Don't use Ex mode, use Q for formatting (revert with ":unmap Q")
 map Q gq
@@ -49,6 +59,7 @@ map Q gq
 " CTRL-U in insert mode deletes a lot. Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break
 " (revert with ":iunmap <C-U>")
+" (i don't understand)
 inoremap <C-U> <C-G>u<C-U>
 
 " Convenient command to see the difference between the current buffer 
@@ -62,9 +73,9 @@ endif
 
 " Higlight current word occurences
 "set hlsearch
-nnoremap * *N
-nnoremap _ :noh<CR>
-set nohlsearch
+"nnoremap * *N
+"nnoremap _ :noh<CR>
+"set nohlsearch
 
 " Add " or ' to selected text in visual mode
 vnoremap "" c"<c-r>""
@@ -73,13 +84,40 @@ vnoremap '' c'<c-r>"'
 " Add blank line below (pending modification)
 nnoremap _ o<Esc>k
 
-" Remove trailing spaces
+" Remove trailing spaces (I don't know what exactly it removes)
 command RmTrail :%s/\s\+$//e
 
-" Use <C-r> to trigger completion
-inoremap <silent><expr> <C-r> coc#refresh()
+" Status line always (https://neovim.io/doc/user/options.html#'laststatus')
+set laststatus=2
 
-" #SHOW WHITESPACES
+" Ignore case in searches
+set ignorecase
+" Override the 'ignorecase' option if the search pattern contains upper
+" case characters. Only used when the search pattern is typed and
+" 'ignorecase' option is on
+set smartcase
+
+" Start directly in insert mode (i think it doesn't work)
+autocmd TermOpen * startinsert
+
+" Remap increase number
+nnoremap <C-c> <C-a>
+
+" Keeping it centered (i think it doesn't work)
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+
+" Save and exit with <leader>
+nnoremap <leader>w :w<CR>
+nnoremap <leader>q :q<CR>
+
+
+" # COLORSCHEME ---------------------------------------------------------------
+colorscheme gruvbox
+
+
+" # SHOW WHITESPACES ----------------------------------------------------------
 " (https://stackoverflow.com/questions/12534313/vim-set-list-as-a-toggle-in-vimrc)
 " (https://stackoverflow.com/questions/1675688/make-vim-show-all-white-spaces-as-a-character)
 "set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
@@ -88,7 +126,11 @@ noremap <F5> :set list!<CR> " remap in normal mode
 inoremap <F5> <C-o>:set list!<CR> " remap in insert mode
 cnoremap <F5> <C-c>:set list!<CR> " remap in command mode
 
-" #WORD WRAP
+
+" # WORD WRAP -----------------------------------------------------------------
+" Break indent (i think it doesn't work)
+set breakindent
+set showbreak=>>
 " Soft word wrap
 set wrap linebreak
 " Word wrap (toggle)
@@ -102,7 +144,8 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " Spell-check set to <leader>o, 'o' for 'orthography'
 map <leader>o :setlocal spell! spelllang=es_es<CR>
 
-" #INDENTATION
+
+" # INDENTATION ---------------------------------------------------------------
 " Spaces instead of tabs
 " - tabstop:     Width of tab character
 " - softtabstop: Fine tunes the amount of white space to be added
@@ -114,13 +157,15 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 
-" #VERTICAL RULER
+
+" # VERTICAL RULER ------------------------------------------------------------
 " Set ruler at line 80 and toggle it with <F4>
 "set colorcolumn=80
 highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 nnoremap <F4> :execute "set colorcolumn=" . (&colorcolumn == "" ? "80" : "")<CR>
 
-" #NERDTREE
+
+" # NERDTREE ------------------------------------------------------------------
 " NERDTreeToggle when <F3>
 noremap <F3> :NERDTreeToggle<CR> " remap in normal mode
 "inoremap <F3> <C-o>:NERDTreeToggle<CR> " remap in insert mode
@@ -129,13 +174,15 @@ noremap <F3> :NERDTreeToggle<CR> " remap in normal mode
 " NERDTree show hidden files by default
 let NERDTreeShowHidden=1
 
-" #LINE NUMBERS
+
+" # LINE NUMBERS --------------------------------------------------------------
 " Toggle line numbers
 nnoremap <F2> :set nonumber! norelativenumber!<CR>
 "inoremap <F2> <C-o> :set nonumber! norelativenumber!<CR>
 "cnoremap <F2> <C-c> :set nonumber! norelativenumber!<CR>
 
-" #WINDOW SPLIT
+
+" # WINDOW SPLIT --------------------------------------------------------------
 " Easier split navigations
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -150,12 +197,14 @@ nnoremap <C-Left> <C-W><C-H>
 " Splits open at the bottom and right
 set splitbelow splitright
 
-" #SYNTAX HIGHLIGHT
+
+" # SYNTAX HIGHLIGHT ----------------------------------------------------------
 " Map extensions to other syntax
 autocmd BufNewFile,BufRead *.env.template set syntax=sh
 autocmd BufNewFile,BufRead *.env.tmpl set syntax=sh
 
-" #MOUSE
+
+" # MOUSE ---------------------------------------------------------------------
 " In many terminal emulators the mouse works just fine. By enabling it you
 " can position the cursor, Visually select and scroll with the mouse.
 " Only xterm can grab the mouse events when using the shift key, for other
@@ -167,3 +216,37 @@ if has('mouse')
         set mouse=nvi
     endif
 endif
+
+
+" # COC -----------------------------------------------------------------------
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+" Enable highlight current symbol on CursorHold:
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" In milliseconds, used for both CursorHold and CursorHoldI,
+" use updatetime instead if not defined
+let g:cursorhold_updatetime = 100
+
+" Use <C-r> to trigger completion
+inoremap <silent><expr> <C-r> coc#refresh()
+
+
+" # TELESCOPE -----------------------------------------------------------------
+" Find files using Telescope command-line sugar
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fr <cmd>Telescope resume<cr>
