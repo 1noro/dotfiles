@@ -245,8 +245,9 @@ inoremap <silent><expr> <C-r> coc#refresh()
 
 " # TELESCOPE -----------------------------------------------------------------
 " Find files using Telescope command-line sugar
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>ff <cmd>Telescope find_files hidden=true<cr>
+nnoremap <leader>fa <cmd>Telescope find_files hidden=true no_ignore=true<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep hidden=true<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fr <cmd>Telescope resume<cr>
