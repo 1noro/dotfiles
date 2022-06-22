@@ -1,88 +1,169 @@
+" init.vim
+" Maintained by 1noro for the purpose of personal use
+
+" Map leader to space
 let mapleader=" "
 
-"install vim-plug: https://github.com/junegunn/vim-plug#unix-linux
+" #PLUGINS
+" Install vim-plug: https://github.com/junegunn/vim-plug#unix-linux
 call plug#begin('~/.config/nvim/plugged')
+    " File system explorer
     Plug 'preservim/nerdtree'
+    " True snippet and additional text editing support
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    " Shows a git diff in the sign column
+    Plug 'airblade/vim-gitgutter'
+    " Fix CursorHold performance
+    Plug 'antoinemadec/FixCursorHold.nvim'
+    " A collection of language packs for Vim (programming)
+    Plug 'sheerun/vim-polyglot'
+    " Display thin vertical lines at each indentation level
+    Plug 'Yggdroot/indentLine'
+    " Telescope dependence
+    Plug 'nvim-lua/plenary.nvim'
+    " Highly extendable fuzzy finder over lists
+    Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
-"some basics
-    syntax on
-    set encoding=utf-8
-    set number relativenumber
+" #BASICS
+syntax on
+set encoding=utf-8
+set number relativenumber
+set history=200 " Keep 200 lines of command line history
+set wildmenu " Display completion matches in a status line
+set display=truncate " Show @@@ in the last line if it is truncated (?)
 
-"share clipboard install wl-copy for wyland or xclip for X11
-    set clipboard+=unnamedplus
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=0
 
-"enable autocompletion
-    set wildmode=longest,list,full
+" Share clipboard install wl-copy for wyland or xclip for X11
+set clipboard+=unnamedplus
 
-"show whitespaces
-"(https://stackoverflow.com/questions/12534313/vim-set-list-as-a-toggle-in-vimrc)
-"(https://stackoverflow.com/questions/1675688/make-vim-show-all-white-spaces-as-a-character)
-    "set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
-    set listchars=eol:¬,tab:--,trail:~,extends:>,precedes:<,space:·
-    "F5 remap in normal mode
-    noremap <F5> :set list!<CR>
-    "F5 remap in insert mode
-    inoremap <F5> <C-o>:set list!<CR>
-    "F5 remap in command mode
-    cnoremap <F5> <C-c>:set list!<CR>
+" Enable autocompletion
+set wildmode=longest,list,full
 
-"disables automatic completion on new line
-    autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o 
+" Don't use Ex mode, use Q for formatting (revert with ":unmap Q")
+map Q gq
 
-"spell-check set to <leader>o, 'o' for 'orthography'
-    map <leader>o :setlocal spell! spelllang=es_es<CR>
+" CTRL-U in insert mode deletes a lot. Use CTRL-G u to first break undo,
+" so that you can undo CTRL-U after inserting a line break
+" (revert with ":iunmap <C-U>")
+inoremap <C-U> <C-G>u<C-U>
 
-"spaces instead of tabs
-" tabstop:          Width of tab character
-" softtabstop:      Fine tunes the amount of white space to be added
-" shiftwidth        Determines the amount of whitespace to add in normal mode
-" expandtab:        When this option is enabled, vi will use spaces instead of tabs
-    filetype plugin indent on
-    set tabstop=4
-    set softtabstop=4
-    set shiftwidth=4
-    set expandtab
+" Convenient command to see the difference between the current buffer 
+" and the file it was loaded from, thus the changes you made.
+" Only define it when not defined already.
+" Revert with: ":delcommand DiffOrig".
+if !exists(":DiffOrig")
+    command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+        \ | wincmd p | diffthis
+endif
 
-"quick save!!
-    map <leader><leader> :w<CR>
+" Higlight current word occurences
+"set hlsearch
+nnoremap * *N
+nnoremap _ :noh<CR>
+set nohlsearch
 
-"set ruler at line 80 and toggle it with <F4>
-    "set colorcolumn=80
-    highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
-    nnoremap <F4> :execute "set colorcolumn=" . (&colorcolumn == "" ? "80" : "")<CR>
+" Add " or ' to selected text in visual mode
+vnoremap "" c"<c-r>""
+vnoremap '' c'<c-r>"'
 
-"Toggle line numbers
-    nnoremap <F2> :set nonumber! norelativenumber!<CR>
-    "inoremap <F2> <C-o> :set nonumber! norelativenumber!<CR>
-    "cnoremap <F2> <C-c> :set nonumber! norelativenumber!<CR>
+" Add blank line below (pending modification)
+nnoremap _ o<Esc>k
 
-"NERDTreeToggle when <F3>    
-    "F3 remap in normal mode
-    noremap <F3> :NERDTreeToggle<CR>
-    "F3 remap in insert mode
-    "inoremap <F3> <C-o>:NERDTreeToggle<CR>
-    "F3 remap in command mode
-    "cnoremap <F3> <C-c>:NERDTreeToggle<CR>
+" Remove trailing spaces
+command RmTrail :%s/\s\+$//e
 
-"NERDTree show hidden files by default
-    let NERDTreeShowHidden=1
+" Use <C-r> to trigger completion
+inoremap <silent><expr> <C-r> coc#refresh()
 
-"Easier split navigations
-    nnoremap <C-J> <C-W><C-J>
-    nnoremap <C-K> <C-W><C-K>
-    nnoremap <C-L> <C-W><C-L>
-    nnoremap <C-H> <C-W><C-H>
+" #SHOW WHITESPACES
+" (https://stackoverflow.com/questions/12534313/vim-set-list-as-a-toggle-in-vimrc)
+" (https://stackoverflow.com/questions/1675688/make-vim-show-all-white-spaces-as-a-character)
+"set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+set listchars=eol:¬,tab:--,trail:~,extends:>,precedes:<,space:·
+noremap <F5> :set list!<CR> " remap in normal mode
+inoremap <F5> <C-o>:set list!<CR> " remap in insert mode
+cnoremap <F5> <C-c>:set list!<CR> " remap in command mode
 
-    nnoremap <C-Down> <C-W><C-J>
-    nnoremap <C-Up> <C-W><C-K>
-    nnoremap <C-Right> <C-W><C-L>
-    nnoremap <C-Left> <C-W><C-H>
+" #WORD WRAP
+" Soft word wrap
+set wrap linebreak
+" Word wrap (toggle)
+noremap <F6> :set wrap!<CR> " remap in normal mode
+inoremap <F6> <C-o>:set wrap!<CR> " remap in insert mode
+cnoremap <F6> <C-c>:set wrap!<CR> " remap in command mode
 
-"Splits open at the bottom and right
-    set splitbelow splitright
+" Disables automatic completion on new line
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o 
 
-"map *.env.template to .env syntax
-    autocmd BufNewFile,BufRead *.env.template set syntax=sh
-    autocmd BufNewFile,BufRead *.env.tmpl set syntax=sh
+" Spell-check set to <leader>o, 'o' for 'orthography'
+map <leader>o :setlocal spell! spelllang=es_es<CR>
+
+" #INDENTATION
+" Spaces instead of tabs
+" - tabstop:     Width of tab character
+" - softtabstop: Fine tunes the amount of white space to be added
+" - shiftwidth   Determines the amount of whitespace to add in normal mode
+" - expandtab:   When this option is enabled, vi will use spaces instead of tabs
+filetype plugin indent on
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+
+" #VERTICAL RULER
+" Set ruler at line 80 and toggle it with <F4>
+"set colorcolumn=80
+highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
+nnoremap <F4> :execute "set colorcolumn=" . (&colorcolumn == "" ? "80" : "")<CR>
+
+" #NERDTREE
+" NERDTreeToggle when <F3>
+noremap <F3> :NERDTreeToggle<CR> " remap in normal mode
+"inoremap <F3> <C-o>:NERDTreeToggle<CR> " remap in insert mode
+"cnoremap <F3> <C-c>:NERDTreeToggle<CR> " remap in command mode
+
+" NERDTree show hidden files by default
+let NERDTreeShowHidden=1
+
+" #LINE NUMBERS
+" Toggle line numbers
+nnoremap <F2> :set nonumber! norelativenumber!<CR>
+"inoremap <F2> <C-o> :set nonumber! norelativenumber!<CR>
+"cnoremap <F2> <C-c> :set nonumber! norelativenumber!<CR>
+
+" #WINDOW SPLIT
+" Easier split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+nnoremap <C-Down> <C-W><C-J>
+nnoremap <C-Up> <C-W><C-K>
+nnoremap <C-Right> <C-W><C-L>
+nnoremap <C-Left> <C-W><C-H>
+
+" Splits open at the bottom and right
+set splitbelow splitright
+
+" #SYNTAX HIGHLIGHT
+" Map extensions to other syntax
+autocmd BufNewFile,BufRead *.env.template set syntax=sh
+autocmd BufNewFile,BufRead *.env.tmpl set syntax=sh
+
+" #MOUSE
+" In many terminal emulators the mouse works just fine. By enabling it you
+" can position the cursor, Visually select and scroll with the mouse.
+" Only xterm can grab the mouse events when using the shift key, for other
+" terminals use ":", select text and press Esc
+if has('mouse')
+    if &term =~ 'xterm'
+        set mouse=a
+    else
+        set mouse=nvi
+    endif
+endif
