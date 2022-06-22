@@ -98,7 +98,7 @@ set ignorecase
 set smartcase
 
 " Start directly in insert mode (i think it doesn't work)
-autocmd TermOpen * startinsert
+"autocmd TermOpen * startinsert
 
 " Remap increase number
 nnoremap <C-c> <C-a>
@@ -106,7 +106,7 @@ nnoremap <C-c> <C-a>
 " Keeping it centered (i think it doesn't work)
 nnoremap n nzzzv
 nnoremap N Nzzzv
-nnoremap J mzJ`z
+"nnoremap J mzJ`z
 
 " Save and exit with <leader>
 nnoremap <leader>w :w<CR>
@@ -122,9 +122,9 @@ colorscheme gruvbox
 " (https://stackoverflow.com/questions/1675688/make-vim-show-all-white-spaces-as-a-character)
 "set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 set listchars=eol:¬,tab:--,trail:~,extends:>,precedes:<,space:·
-noremap <F5> :set list!<CR> " remap in normal mode
-inoremap <F5> <C-o>:set list!<CR> " remap in insert mode
-cnoremap <F5> <C-c>:set list!<CR> " remap in command mode
+noremap <F5> :set list!<CR>
+inoremap <F5> <C-o>:set list!<CR>
+cnoremap <F5> <C-c>:set list!<CR>
 
 
 " # WORD WRAP -----------------------------------------------------------------
@@ -134,9 +134,9 @@ set showbreak=>>
 " Soft word wrap
 set wrap linebreak
 " Word wrap (toggle)
-noremap <F6> :set wrap!<CR> " remap in normal mode
-inoremap <F6> <C-o>:set wrap!<CR> " remap in insert mode
-cnoremap <F6> <C-c>:set wrap!<CR> " remap in command mode
+noremap <F6> :set wrap!<CR>
+inoremap <F6> <C-o>:set wrap!<CR>
+cnoremap <F6> <C-c>:set wrap!<CR>
 
 " Disables automatic completion on new line
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o 
@@ -167,9 +167,9 @@ nnoremap <F4> :execute "set colorcolumn=" . (&colorcolumn == "" ? "80" : "")<CR>
 
 " # NERDTREE ------------------------------------------------------------------
 " NERDTreeToggle when <F3>
-noremap <F3> :NERDTreeToggle<CR> " remap in normal mode
-"inoremap <F3> <C-o>:NERDTreeToggle<CR> " remap in insert mode
-"cnoremap <F3> <C-c>:NERDTreeToggle<CR> " remap in command mode
+noremap <F3> :NERDTreeToggle<CR>
+"inoremap <F3> <C-o>:NERDTreeToggle<CR>
+"cnoremap <F3> <C-c>:NERDTreeToggle<CR>
 
 " NERDTree show hidden files by default
 let NERDTreeShowHidden=1
