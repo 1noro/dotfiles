@@ -26,6 +26,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'nvim-telescope/telescope.nvim'
     " A light and configurable statusline/tabline
     Plug 'itchyny/lightline.vim'
+    " The premier Vim plugin for Git (lightline dependence)
+    Plug 'tpope/vim-fugitive'
     " Gruvbox themes
     Plug 'morhetz/gruvbox'
     Plug 'shinchu/lightline-gruvbox.vim'
@@ -41,6 +43,10 @@ set number relativenumber
 set history=200 " Keep 200 lines of command line history
 set wildmenu " Display completion matches in a status line
 set display=truncate " Show @@@ in the last line if it is truncated (?)
+
+" Mode info like '-- INSERT --' is unnecessary anymore because the mode
+" information is displayed in the statusline
+set noshowmode
 
 " Show a few lines of context around the cursor. Note that this makes the
 " text scroll if you mouse-click near the start or end of the window.
@@ -251,3 +257,15 @@ nnoremap <leader>fg <cmd>Telescope live_grep hidden=true<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fr <cmd>Telescope resume<cr>
+
+" # LIGHTLINE -----------------------------------------------------------------
+let g:lightline = {
+      \ 'colorscheme': 'gruvbox',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
