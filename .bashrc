@@ -41,6 +41,29 @@ if [ -f "$HOME/.nvm/nvm.sh" ]; then
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 
+# LF
+# Change working dir in shell to last dir in lf on exit (adapted from ranger)
+# (https://raw.githubusercontent.com/gokcehan/lf/master/etc/lfcd.sh)
+if command -v lf &> /dev/null; then
+    lfcd () {
+        tmp="$(mktemp)"
+        lf -last-dir-path="$tmp" "$@"
+        if [ -f "$tmp" ]; then
+            dir="$(cat "$tmp")"
+            rm -f "$tmp"
+            if [ -d "$dir" ]; then
+                if [ "$dir" != "$(pwd)" ]; then
+                    cd "$dir"
+                fi
+            fi
+        fi
+    }
+
+    # bind <C-o> to lfcd command
+    bind '"\C-o":"lfcd\C-m"'
+fi
+
+
 # EXPORTS
 # export ANDROID_SDK_ROOT=$HOME/Android/Sdk
 export EDITOR=nvim
