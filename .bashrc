@@ -66,7 +66,14 @@ fi
 
 # EXPORTS
 # export ANDROID_SDK_ROOT=$HOME/Android/Sdk
+export TERM=xterm-256color
+export COLORTERM=truecolor
 export EDITOR=nvim
+export VISUAL=nvim
+export BROWSER=firefox
+export VIDEO=mpv
+export IMAGE=sxiv
+
 export HISTSIZE=10000
 export HISTFILESIZE=10000
 # para que las aplicaciones qt usen wayland (creo que no funciona muy bien)

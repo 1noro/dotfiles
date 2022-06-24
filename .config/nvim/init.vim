@@ -22,6 +22,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'Yggdroot/indentLine'
     " Telescope dependence
     Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     " Highly extendable fuzzy finder over lists
     Plug 'nvim-telescope/telescope.nvim'
     " A light and configurable statusline/tabline
@@ -33,8 +34,17 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'shinchu/lightline-gruvbox.vim'
     " Toggle comments with <leader>c<leader>
     Plug 'scrooloose/nerdcommenter'
+    " Displays a popup with possible key bindings of the command you started 
+    Plug 'folke/which-key.nvim'
 call plug#end()
 
+lua << EOF
+  require("which-key").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  }
+EOF
 
 " # BASICS -------------------------------------------------------------------- 
 syntax on
@@ -43,6 +53,9 @@ set number relativenumber
 set history=200 " Keep 200 lines of command line history
 set wildmenu " Display completion matches in a status line
 set display=truncate " Show @@@ in the last line if it is truncated (?)
+
+" Set window title auto
+autocmd BufEnter * let &titlestring = "nvim: " . expand("%:t")
 
 " Mode info like '-- INSERT --' is unnecessary anymore because the mode
 " information is displayed in the statusline
@@ -148,7 +161,7 @@ cnoremap <F6> <C-c>:set wrap!<CR>
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o 
 
 " Spell-check set to <leader>o, 'o' for 'orthography'
-map <leader>o :setlocal spell! spelllang=es_es<CR>
+map <leader>o :setlocal spell! spelllang=es_es,en_us<CR>
 
 
 " # INDENTATION ---------------------------------------------------------------
@@ -248,6 +261,19 @@ let g:cursorhold_updatetime = 100
 " Use <C-r> to trigger completion
 inoremap <silent><expr> <C-r> coc#refresh()
 
+" Use <Tab> and <S-Tab> to navigate the completion list
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Coc auto-install extensions
+let g:coc_global_extensions = ['coc-json', 'coc-sh']
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 
 " # TELESCOPE -----------------------------------------------------------------
 " Find files using Telescope command-line sugar
