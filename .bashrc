@@ -53,7 +53,8 @@ if command -v lf &> /dev/null; then
             rm -f "$tmp"
             if [ -d "$dir" ]; then
                 if [ "$dir" != "$(pwd)" ]; then
-                    cd "$dir"
+                    #cd "$dir"
+                    cd "$dir" || return
                 fi
             fi
         fi

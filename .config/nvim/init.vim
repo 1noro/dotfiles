@@ -266,7 +266,13 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Coc auto-install extensions
-let g:coc_global_extensions = ['coc-json', 'coc-sh']
+let g:coc_global_extensions = [ 
+    \ 'coc-json',
+    \ 'coc-sh',
+    \ 'coc-diagnostic',
+    \ 'coc-yaml',
+    \ 'coc-html',
+    \ 'coc-docker']
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
