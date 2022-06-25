@@ -17,6 +17,6 @@ My dotfiles repo.
 ## Font
 
 This configuration is intended to be used with source 
-JetBrainsMono Nerd Font (of https://www.nerdfonts.com).
+_JetBrainsMono Nerd Font_ from https://www.nerdfonts.com.
 
 Please download it and move it to the `/usr/share/fonts` folder.
