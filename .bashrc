@@ -1,6 +1,6 @@
 #!/bin/bash
 # ~/.bashrc
-# maintained by 1noro for the purpose of personal use
+# Maintainer: 1noro <ppuubblliicc@protonmail..com>
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -67,7 +67,7 @@ fi
 
 # EXPORTS
 # export ANDROID_SDK_ROOT=$HOME/Android/Sdk
-export TERM=xterm-256color
+#export TERM=xterm-256color
 export COLORTERM=truecolor
 export EDITOR=nvim
 export VISUAL=nvim
