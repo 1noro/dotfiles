@@ -272,14 +272,15 @@ let g:coc_global_extensions = [
     \ 'coc-diagnostic',
     \ 'coc-yaml',
     \ 'coc-html',
+    \ 'coc-sql',
     \ 'coc-docker']
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+"xmap <leader>f  <Plug>(coc-format-selected)
+"nmap <leader>f  <Plug>(coc-format-selected) " Conflicto con telescope
 
 " # TELESCOPE -----------------------------------------------------------------
 " Find files using Telescope command-line sugar
