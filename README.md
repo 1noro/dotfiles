@@ -12,3 +12,11 @@ My dotfiles repo.
 - beets
 - mpv
 - starship prompt
+- alacritty
+
+## Font
+
+This configuration is intended to be used with source 
+JetBrainsMono Nerd Font (of https://www.nerdfonts.com).
+
+Please download it and move it to the `/usr/share/fonts` folder.
