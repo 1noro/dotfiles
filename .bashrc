@@ -5,6 +5,11 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# VTE (FOR TILIX)
+#if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        #source /etc/profile.d/vte.sh
+#fi
+
 # PROMPT
 # - bash prompt
 parse_git_branch() {
@@ -31,16 +36,6 @@ if command -v pacman &> /dev/null; then
     fi
 fi
 
-# NVM
-if [ -f /usr/share/nvm/init-nvm.sh ]; then
-    source /usr/share/nvm/init-nvm.sh
-fi
-if [ -f "$HOME/.nvm/nvm.sh" ]; then
-    export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-fi
-
 # LF
 # Change working dir in shell to last dir in lf on exit (adapted from ranger)
 # (https://raw.githubusercontent.com/gokcehan/lf/master/etc/lfcd.sh)
@@ -64,17 +59,8 @@ if command -v lf &> /dev/null; then
     bind '"\C-o":"lfcd\C-m"'
 fi
 
-
 # EXPORTS
-# export ANDROID_SDK_ROOT=$HOME/Android/Sdk
-#export TERM=xterm-256color
-export COLORTERM=truecolor
-export EDITOR=nvim
-export VISUAL=nvim
-export BROWSER=firefox
-export VIDEO=mpv
-export IMAGE=sxiv
-
+# > The most global exports are in the .bash_profile file
 export HISTSIZE=10000
 export HISTFILESIZE=10000
 # para que las aplicaciones qt usen wayland (creo que no funciona muy bien)
