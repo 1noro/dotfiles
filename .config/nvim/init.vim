@@ -97,8 +97,9 @@ endif
 "set nohlsearch
 
 " Add " or ' to selected text in visual mode
-vnoremap "" c"<c-r>""
-vnoremap '' c'<c-r>"'
+vnoremap "" c"<c-r>""<Esc>
+vnoremap '' c'<c-r>"'<Esc>
+"vnoremap `` c`<c-r>"` " search for an appropriate bindig
 
 " Add blank line below (pending modification)
 nnoremap _ o<Esc>k
