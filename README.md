@@ -13,6 +13,7 @@ My dotfiles repo.
 - mpv
 - starship prompt
 - alacritty
+- terminator
 
 ## Font
 
