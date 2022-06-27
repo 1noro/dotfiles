@@ -148,6 +148,8 @@ cnoremap <F5> <C-c>:set list!<CR>
 
 
 " # WORD WRAP -----------------------------------------------------------------
+" Dont wrap by default
+:set nowrap
 " Break indent (i think it doesn't work)
 set breakindent
 set showbreak=>>
