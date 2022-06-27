@@ -5,6 +5,11 @@
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 export GPG_TTY=$(tty)
 
+# RUSTUP
+if [ -f "$HOME/.cargo/env" ]; then
+    . "$HOME/.cargo/env"
+fi
+
 # GO
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
