@@ -227,6 +227,7 @@ set splitright splitbelow
 " Map extensions to other syntax
 autocmd BufNewFile,BufRead *.env.template set syntax=sh
 autocmd BufNewFile,BufRead *.env.tmpl set syntax=sh
+autocmd BufNewFile,BufRead *.zsh set syntax=sh
 
 
 " # MOUSE ---------------------------------------------------------------------
