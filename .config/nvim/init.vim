@@ -37,7 +37,7 @@ call plug#begin('~/.config/nvim/plugged')
     " Displays a popup with possible key bindings of the command you started 
     Plug 'folke/which-key.nvim'
     " Personal wiki for Vim
-    Plug 'vimwiki/vimwiki'
+    "Plug 'vimwiki/vimwiki'
 call plug#end()
 
 lua << EOF
