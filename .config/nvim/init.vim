@@ -36,6 +36,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'scrooloose/nerdcommenter'
     " Displays a popup with possible key bindings of the command you started 
     Plug 'folke/which-key.nvim'
+    " Personal wiki for Vim
+    Plug 'vimwiki/vimwiki'
 call plug#end()
 
 lua << EOF
@@ -149,12 +151,13 @@ cnoremap <F5> <C-c>:set list!<CR>
 
 " # WORD WRAP -----------------------------------------------------------------
 " Dont wrap by default
-:set nowrap
+set nowrap
 " Break indent (i think it doesn't work)
 set breakindent
 set showbreak=>>
 " Soft word wrap
-set wrap linebreak
+"set wrap linebreak
+set linebreak
 " Word wrap (toggle)
 noremap <F6> :set wrap!<CR>
 inoremap <F6> <C-o>:set wrap!<CR>
@@ -217,7 +220,7 @@ nnoremap <C-Right> <C-W><C-L>
 nnoremap <C-Left> <C-W><C-H>
 
 " Splits open at the bottom and right
-set splitbelow splitright
+set splitright splitbelow
 
 
 " # SYNTAX HIGHLIGHT ----------------------------------------------------------
