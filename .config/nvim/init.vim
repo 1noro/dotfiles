@@ -279,6 +279,7 @@ let g:coc_global_extensions = [
     \ 'coc-yaml',
     \ 'coc-html',
     \ 'coc-sql',
+    \ 'coc-groovy',
     \ 'coc-docker']
 
 " Symbol renaming.
