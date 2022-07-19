@@ -38,6 +38,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'folke/which-key.nvim'
     " Personal wiki for Vim
     "Plug 'vimwiki/vimwiki'
+    " Git Blame for statusline
+    Plug 'zivyangll/git-blame.vim'
 call plug#end()
 
 lua << EOF
@@ -310,3 +312,6 @@ let g:lightline = {
       \   'gitbranch': 'FugitiveHead'
       \ },
       \ }
+
+" # GIT BLAME -----------------------------------------------------------------
+nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
