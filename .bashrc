@@ -92,6 +92,7 @@ alias e='$EDITOR'
 alias v='$EDITOR'
 alias vc='nvim ~/.config/nvim/init.vim'
 alias yt="yt-dlp --add-metadata -i -o '%(upload_date)s-%(title)s.%(ext)s'"
+alias yt2mp3="yt-dlp -f 'ba' -x --audio-format mp3"
 alias m='make'
 alias fuck='sudo !!'
 alias b='xkbbell'
@@ -119,5 +120,3 @@ alias grh='git reset HEAD'
 alias grhh='git reset HEAD --hard'
 # - alias for the contemporary-z program
 alias z='. ~/.local/share/cz/cz.sh'
-
-
