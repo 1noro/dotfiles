@@ -12,12 +12,12 @@
 
 # PROMPT
 # - bash prompt
-parse_git_branch() {
-    if [[ -d ".git" ]]; then
-        git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-    fi
-}
-export PS1="\[\033[38;5;9m\][\[$(tput sgr0)\]\[\033[38;5;11m\]\u\[$(tput sgr0)\]@\[$(tput sgr0)\]\[\033[38;5;6m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;13m\]\W\[$(tput sgr0)\]\[\033[38;5;11m\]\$(parse_git_branch)\[$(tput sgr0)\]\[\033[38;5;9m\]]\[$(tput sgr0)\]\\$\[$(tput sgr0)\] "
+# parse_git_branch() {
+#     if [[ -d ".git" ]]; then
+#         git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+#     fi
+# }
+# export PS1="\[\033[38;5;9m\][\[$(tput sgr0)\]\[\033[38;5;11m\]\u\[$(tput sgr0)\]@\[$(tput sgr0)\]\[\033[38;5;6m\]\h\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;13m\]\W\[$(tput sgr0)\]\[\033[38;5;11m\]\$(parse_git_branch)\[$(tput sgr0)\]\[\033[38;5;9m\]]\[$(tput sgr0)\]\\$\[$(tput sgr0)\] "
 
 # - starship prompt
 if command -v starship &> /dev/null; then
@@ -69,6 +69,9 @@ export QT_QPA_PLATFORM=wayland
 #complete -c man which
 complete -cf sudo
 
+# BINDS
+bind '"\C-g":"cd $(find * -type d | fzf)\C-m"'
+
 # ALIAS
 # - color
 alias ls='ls --color=auto'
@@ -83,19 +86,19 @@ alias dps='docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}
 alias img='sxiv -a' # -a para iniciar la animaciones auto
 alias x='sxiv -at' # -at para iniciar la animaciones auto y abrir en thumbnail mode
 # - quick access
+alias m='make'
+alias b='xkbbell'
+alias e='$EDITOR'
+alias v='$EDITOR'
+alias vc='nvim ~/.config/nvim/init.vim'
 alias p='sudo pacman'
 alias lsp='pacman -Qett --color=always | less -R' # list packages
 alias SS='sudo systemctl'
 alias j='journalctl -xe'
 alias Sjf='sudo journalctl -p 3 -xb'
-alias e='$EDITOR'
-alias v='$EDITOR'
-alias vc='nvim ~/.config/nvim/init.vim'
 alias yt="yt-dlp --add-metadata -i -o '%(upload_date)s-%(title)s.%(ext)s'"
 alias yt2mp3="yt-dlp -f 'ba' -x --audio-format mp3"
-alias m='make'
 alias fuck='sudo !!'
-alias b='xkbbell'
 # alias pandoc="docker run --rm --volume \"$(pwd):/data\" --user $(id -u):$(id -g) pandoc/latex"
 # - git
 alias g='git'
