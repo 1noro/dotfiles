@@ -24,6 +24,12 @@ if command -v starship &> /dev/null; then
     eval "$(starship init bash)"
 fi
 
+# AUTOCOMPLETION
+# (https://github.com/git/git/blob/master/contrib/completion/git-completion.bash)
+if [ -f ~/bin/git-completion.bash ]; then
+  . ~/bin/git-completion.bash
+fi
+
 # PACMAN UPDATE REMINDER
 FLAG="/tmp/check_updates.flag"
 if command -v pacman &> /dev/null; then
