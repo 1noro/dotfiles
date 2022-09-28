@@ -65,6 +65,11 @@ if command -v lf &> /dev/null; then
     bind '"\C-o":"lfcd\C-m"'
 fi
 
+# FUNCTIONS
+history-top() {
+    history | awk 'BEGIN {FS="[ \t]+|\\|"} {print $3}' | sort | uniq -c | sort -nr | head -20
+}
+
 # EXPORTS
 # > The most global exports are in the .bash_profile file
 export HISTSIZE=10000
@@ -76,7 +81,7 @@ export QT_QPA_PLATFORM=wayland
 complete -cf sudo
 
 # BINDS
-bind '"\C-g":"cd $(find * -type d | fzf)\C-m"'
+bind '"\C-g":"cd \"$(find * -type d | fzf)\"\C-m"'
 
 # ALIAS
 # - color
