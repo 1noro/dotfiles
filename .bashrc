@@ -79,6 +79,10 @@ dirn() {
     docker image rm '$(docker images | grep none | awk "{print $3}")'
 }
 
+pacman-fzf() {
+    pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S
+}
+
 # EXPORTS
 # > The most global exports are in the .bash_profile file
 export HISTSIZE=10000
