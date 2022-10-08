@@ -70,6 +70,15 @@ history-top() {
     history | awk 'BEGIN {FS="[ \t]+|\\|"} {print $3}' | sort | uniq -c | sort -nr | head -20
 }
 
+cd-fzf() {
+    cd "$(find ./* -type d | fzf --multi --preview 'exa --icons -1 {1}')" || return
+}
+
+# docker images remove none
+dirn() {
+    docker image rm '$(docker images | grep none | awk "{print $3}")'
+}
+
 # EXPORTS
 # > The most global exports are in the .bash_profile file
 export HISTSIZE=10000
@@ -81,7 +90,8 @@ export QT_QPA_PLATFORM=wayland
 complete -cf sudo
 
 # BINDS
-bind '"\C-g":"cd \"$(find * -type d | fzf)\"\C-m"'
+bind '"\C-g":"cd-fzf\C-m"'
+bind '"\C-e":"code .\C-m"'
 
 # ALIAS
 # - color
@@ -91,7 +101,6 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 # -- docker
 alias di='docker images'
-alias dirn='docker image rm $(docker images | grep none | awk "{print \$3}")'
 alias dps='docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}"'
 # - sxiv
 alias img='sxiv -a' # -a para iniciar la animaciones auto
