@@ -40,6 +40,8 @@ call plug#begin('~/.config/nvim/plugged')
     "Plug 'vimwiki/vimwiki'
     " Git Blame for statusline
     Plug 'zivyangll/git-blame.vim'
+    " Spell check (markdown & plain text)
+    "Plug 'rhysd/vim-grammarous'
 call plug#end()
 
 lua << EOF

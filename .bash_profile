@@ -32,3 +32,8 @@ export READER=evince
 export BROWSER=firefox
 export VIDEO=mpv
 export IMAGE=sxiv
+
+# JAVA
+# export JAVA_HOME=/usr/lib/jvm/default
+# yo need to install jdk11-openjdk
+# export JAVA_COMPILER=javac

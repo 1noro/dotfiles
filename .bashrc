@@ -31,16 +31,16 @@ if [ -f ~/bin/git-completion.bash ]; then
 fi
 
 # PACMAN UPDATE REMINDER
-FLAG="/tmp/check_updates.flag"
-if command -v pacman &> /dev/null; then
-    if [[ $(pacman -Qu) ]]; then
-        if [ ! -f $FLAG ]; then
-            echo "sudo pacman -Syyu" >> ~/.histfile
-            touch $FLAG
-        fi
-        echo -e "Have you checked the \e[92m\e[1mupdates\e[0m yet?"
-    fi
-fi
+# FLAG="/tmp/check_updates.flag"
+# if command -v pacman &> /dev/null; then
+#     if [[ $(pacman -Qu) ]]; then
+#         if [ ! -f $FLAG ]; then
+#             echo "sudo pacman -Syyu" >> ~/.histfile
+#             touch $FLAG
+#         fi
+#         echo -e "Have you checked the \e[92m\e[1mupdates\e[0m yet?"
+#     fi
+# fi
 
 # LF
 # Change working dir in shell to last dir in lf on exit (adapted from ranger)
@@ -147,3 +147,4 @@ alias grh='git reset HEAD'
 alias grhh='git reset HEAD --hard'
 # - alias for the contemporary-z program
 alias z='. ~/.local/share/cz/cz.sh'
+

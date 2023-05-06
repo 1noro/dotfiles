@@ -29,7 +29,6 @@
     "tabnine.experimentalAutoImports": true,
     "workbench.iconTheme": "material-icon-theme",
     "javascript.updateImportsOnFileMove.enabled": "always",
-    "window.zoomLevel": 2,
     "editor.minimap.enabled": false,
     "[javascript]": {
         "editor.tabSize": 2,
@@ -52,11 +51,30 @@
         "*": true,
         "yaml": true,
         "plaintext": true,
-        "markdown": false,
+        "markdown": true,
         "json": true,
         "latex": false
     },
-    "redhat.telemetry.enabled": true,
+    "redhat.telemetry.enabled": false,
     "workbench.editor.untitled.hint": "hidden",
-    "workbench.colorTheme": "Gruvbox Dark Medium"
+    "workbench.colorTheme": "Gruvbox Dark Medium",
+    "jenkins.pipeline.linter.connector.crumbUrl": "http://192.168.110.109:8080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,%22:%22,//crumb)",
+    "jenkins.pipeline.linter.connector.url": "http://192.168.110.109:8080/pipeline-model-converter/validate",
+    "jenkins.pipeline.linter.connector.user": "frank",
+    "jenkins.pipeline.linter.connector.strictssl": false,
+    "jenkins.pipeline.linter.connector.token": "112de9c521346ff60876f31dcbbbf20bfc",
+    "cSpell.userWords": [
+        "autogestionado",
+        "mahjong",
+        "mkdir",
+        "nginx"
+    ],
+    "telemetry.telemetryLevel": "crash",
+    "liveshare.accessibility.soundsEnabled": false,
+    "liveshare.accessibility.voiceEnabled": false,
+    "extensions.autoUpdate": "onlyEnabledExtensions",
+    "shellcheck.customArgs": [
+        "-x"
+    ],
+    "window.zoomLevel": 1
 }
